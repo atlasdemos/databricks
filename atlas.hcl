@@ -16,7 +16,7 @@ env "demo" {
   schema {
     src = "file://schema.sql"
     repo {
-      name = "databricks-demo"
+      name = "databricks-cicd-demo"
     }
   }
   migration {

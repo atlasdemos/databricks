@@ -220,7 +220,7 @@ gh secret set DATABRICKS_DEV_URL
 First, set up an Atlas Cloud repository by running:
 
 ```shell
-atlas schema push databricks-demo --dev-url "$DATABRICKS_DEV_URL" -u "file://schema.sql"
+atlas schema push databricks-cicd-demo --dev-url "$DATABRICKS_DEV_URL" -u "file://schema.sql"
 ```
 
 _Replace `databricks-demo` with your Atlas Cloud repository name._

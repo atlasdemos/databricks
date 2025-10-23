@@ -5,6 +5,7 @@ CREATE TABLE `default`.`users` (
   `id` BIGINT NOT NULL,
   `email` STRING,
   `display_name` STRING,
+  `full_name` STRING,
   `created_at` TIMESTAMP
 ) TBLPROPERTIES ('delta.checkpoint.writeStatsAsJson' = 'false',
     'delta.checkpoint.writeStatsAsStruct' = 'true',
