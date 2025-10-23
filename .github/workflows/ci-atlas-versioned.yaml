@@ -1,0 +1,45 @@
+name: Atlas Versioned CI - Databricks
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/ci-atlas.yaml
+      - 'migrations/*'
+  pull_request:
+    paths:
+      - 'migrations/*'
+# Permissions to write comments on the pull request.
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  atlas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ariga/setup-atlas@v0
+        with:
+          cloud-token: '${{ secrets.ATLAS_CLOUD_TOKEN }}'
+          version: 'beta'
+      - uses: ariga/atlas-action/migrate/lint@v1
+        with:
+          dir: 'file://migrations'
+          dev-url: '${{ secrets.DATABRICKS_DEV_URL }}'
+          dir-name: 'databricks-demo'
+        env:
+          GITHUB_TOKEN: '${{ github.token }}'
+      - uses: ariga/atlas-action/migrate/push@v1
+        if: github.ref == 'refs/heads/main'
+        with:
+          dir: 'file://migrations'
+          dev-url:  '${{ secrets.DATABRICKS_DEV_URL }}'
+          dir-name: 'databricks-demo'
+      - uses: ariga/atlas-action/migrate/apply@v1
+        if: github.ref == 'refs/heads/main'
+        with:
+          dir: 'file://migrations'
+          url: '${{ secrets.DATABRICKS_URL }}'
+          tx-mode: none
