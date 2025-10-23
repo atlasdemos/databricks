@@ -1,6 +1,6 @@
 # Databricks Schema Management with Atlas Demo
 
-This repository contains the code shown in our Databricks Schema Management with Atlas demo video.
+This repository contains the code shown in our [Databricks Schema Management with Atlas demo video](https://youtu.be/6DMO0LeuG3Y).
 To set up with your own Databricks workspace, follow the instructions below.
 
 For more about using Databricks with Atlas, check out our [Databricks guide](https://atlasgo.io/guides/databricks/automatic-migrations).
