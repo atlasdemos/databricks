@@ -168,8 +168,8 @@ atlas migrate apply -u "$DATABRICKS_URL" --tx-mode="none"
 6. Run the `atlas migrate push` command again to update the Atlas Cloud repository.
 
 > [!NOTE]
-> Atlas automatically creates a directory in your parent directory called `migrations` for the migration files. If 
-> you'd like to use a different directory for migrations, add `--dir "file://dir-name"` to all of the above commands.
+> The migrations directory is created in the working directory and named `migrations` by default. If you'd like to
+> use a different directory for the migration files, add `--dir "file://<path/to/dir>"` to all of the above commands.
 
 ## Automating migrations with GitHub Actions
 
